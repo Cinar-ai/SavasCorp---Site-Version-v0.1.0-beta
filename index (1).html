@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SavasCorp × ToFL</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS (Animate on Scroll) -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .logo-text {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 2px;
+    }
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #bg-video {
+      position: absolute;
+      top: 0; left: 0;
+      min-width: 100%; min-height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: -1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 5;
+    }
+    /* Hover card */
+    .hover-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+    /* Loader */
+    #loader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      z-index: 9999;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 1.5s ease, visibility 1.5s ease;
+    }
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    #loader .loader-content {
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      z-index: 2;
+      animation: fadeIn 2s ease-in-out infinite alternate;
+    }
+    #loader .stars {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+      animation: moveStars 20s linear infinite;
+      z-index: 1;
+    }
+    @keyframes moveStars {
+      from { transform: translate(0,0); }
+      to { transform: translate(-500px, -500px); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
+    }
+    /* Timeline */
+    .timeline li {
+      border-left: 3px solid #0dcaf0;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: -9px;
+      top: 5px;
+      width: 15px;
+      height: 15px;
+      background: #0dcaf0;
+      border-radius: 50%;
+    }
+    /* Scroll Progress Bar */
+    #progressBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 5px;
+      background: #0dcaf0;
+      width: 0%;
+      z-index: 2000;
+    }
+  </style>
+</head>
+<body class="bg-dark text-light">
+  <div id="progressBar"></div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="stars"></div>
+    <div class="loader-content">
+      <h1>SavasCorp × ToFL</h1>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold logo-text" href="#">SavasCorp × ToFL</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#collab">Collaboration</a></li>
+          <li class="nav-item"><a class="nav-link" href="#choose">Select</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero d-flex align-items-center justify-content-center text-center text-white" id="home">
+    <video autoplay muted loop id="bg-video" poster="https://via.placeholder.com/1920x1080?text=Video+Unavailable">
+      <source src="https://www.spacex.com/media/crew-1_launch_desktop.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <div class="container hero-content" data-aos="fade-up">
+      <h1 class="display-3 fw-bold mb-3 orbitron">SavasCorp × ToFL</h1>
+      <p class="lead"><span id="typewriter"></span></p>
+      <a href="#choose" class="btn btn-outline-light btn-lg mt-4">Select Company</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-5" id="about">
+    <div class="container text-center" data-aos="fade-up">
+      <h2 class="fw-bold mb-4">About</h2>
+      <p class="text-light">I am Çınar Savaş. SavasCorp, my first cryptocurrency project, provided an initial experience in the digital finance sector. Currently, my focus is on developing innovative solutions in space and artificial intelligence technologies and creating sustainable projects in these fields. This platform has been established to share my vision and technological initiatives.</p>
+    </div>
+  </section>
+
+  <!-- Collaboration Section -->
+  <section class="bg-black py-5" id="collab">
+    <div class="container text-center">
+      <h2 class="fw-bold text-light mb-4" data-aos="zoom-in">Collaboration</h2>
+      <div class="row g-4">
+        <div class="col-md-6" data-aos="fade-right">
+          <div class="p-4 border rounded shadow-sm h-100 bg-dark hover-card">
+            <h3 class="text-primary">SavasCorp</h3>
+            <p>Developing revolutionary solutions in space, defense, and advanced technology.</p>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-left">
+          <div class="p-4 border rounded shadow-sm h-100 bg-dark hover-card">
+            <h3 class="text-danger">ToFL</h3>
+            <p>Transforming the world with energy, AI, and next-gen transportation technologies.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Choose Section -->
+  <section class="py-5" id="choose">
+    <div class="container text-center" data-aos="fade-up">
+      <h2 class="fw-bold mb-4">Select Your Company</h2>
+      <p class="mb-4">From which company’s perspective do you want to view the collaboration?</p>
+      <div class="d-flex justify-content-center">
+        <select class="form-select w-auto me-3" id="company-select">
+          <option value="">-- Choose --</option>
+          <option value="SavasCorp">SavasCorp</option>
+          <option value="ToFL">ToFL</option>
+        </select>
+        <button class="btn btn-outline-light" id="confirm-btn">Confirm</button>
+      </div>
+      <div id="result" class="mt-4 text-info fw-bold"></div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="bg-dark py-5">
+    <div class="container text-center" data-aos="fade-up">
+      <h2 class="fw-bold mb-4">Key Statistics</h2>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <h3 class="text-info counter" data-target="2020">0</h3>
+          <p>Founded</p>
+        </div>
+        <div class="col-md-3">
+          <h3 class="text-success counter" data-target="0">0</h3><span class="text-success">M$</span>
+          <p>Market Cap</p>
+        </div>
+        <div class="col-md-3">
+          <h3 class="text-warning counter" data-target="3">0</h3>
+          <p>Active Projects</p>
+        </div>
+        <div class="col-md-3">
+          <h3 class="text-danger counter" data-target="3">0</h3>
+          <p>Partners</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap Section -->
+  <section class="py-5 bg-black">
+    <div class="container" data-aos="fade-up">
+      <h2 class="fw-bold text-center mb-4">Roadmap</h2>
+      <ul class="timeline list-unstyled">
+        <li class="mb-4">
+          <h5 class="text-primary">2020 - Start</h5>
+          <p>SavasCorp was founded and the first cryptocurrency project was introduced.</p>
+        </li>
+        <li class="mb-4">
+          <h5 class="text-success">2023 - Expansion</h5>
+          <p>Focus expanded to space technologies and artificial intelligence solutions.</p>
+        </li>
+        <li class="mb-4">
+          <h5 class="text-warning">2024 - Collaboration</h5>
+          <p>Strategic partnership with ToFL to work on energy and transportation.</p>
+        </li>
+        <li>
+          <h5 class="text-danger">2025+ - Future Vision</h5>
+          <p>Developing sustainable, cutting-edge solutions for global challenges.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-5 bg-dark" id="faq">
+    <div class="container" data-aos="fade-up">
+      <h2 class="fw-bold text-center mb-4">FAQ</h2>
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q1">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a1">
+              What is SavasCorp?
+            </button>
+          </h2>
+          <div id="a1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              SavasCorp is an innovative project focusing on space and artificial intelligence technologies.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">
+              What is ToFL?
+            </button>
+          </h2>
+          <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              ToFL develops energy, AI, and next-gen transportation solutions for a sustainable future.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q3">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">
+              How can I follow updates?
+            </button>
+          </h2>
+          <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              You can follow project updates on this platform and through future announcements.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-5 bg-black" id="team">
+    <div class="container text-center" data-aos="fade-up">
+      <h2 class="fw-bold mb-4">Team</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <div class="p-4 border rounded shadow-sm bg-dark hover-card">
+            <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Founder">
+            <h4 class="text-info">Çınar Savaş</h4>
+            <p>Founder / Visionary</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-5 bg-dark" id="contact">
+    <div class="container text-center" data-aos="fade-up">
+      <h2 class="fw-bold mb-4">Contact</h2>
+      <p>Stay updated with our projects and vision. Subscribe below:</p>
+      <form class="d-flex justify-content-center">
+        <input type="email" class="form-control w-50 me-2" placeholder="Enter your email" required>
+        <button class="btn btn-info">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-center py-4 mt-5">
+    <p class="mb-0">&copy; 2025 SavasCorp × ToFL | All Rights Reserved</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    try {
+      // Sağ tık engelleme
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        console.log('Right click is disabled on this site.');
+      });
+
+      const loader = document.getElementById('loader');
+      const typewriterEl = document.getElementById("typewriter");
+      const text = "Building the future together.";
+      let i = 0;
+
+      function typeWriter() {
+        try {
+          if (i < text.length) {
+            typewriterEl.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 100);
+          }
+        } catch (error) {
+          console.error('Typewriter error:', error);
+        }
+      }
+
+      window.addEventListener("load", () => {
+        try {
+          // Start typewriter after loader is hidden
+          setTimeout(() => {
+            loader.classList.add('hidden');
+            typeWriter();
+          }, 2000); // 2 seconds delay for loader
+        } catch (error) {
+          console.error('Loader hide error:', error);
+        }
+      });
+
+      const Mcap = "Coming soonM$";
+      document.addEventListener('DOMContentLoaded', () => {
+        try {
+          const select = document.getElementById('company-select');
+          const button = document.getElementById('confirm-btn');
+          const result = document.getElementById('result');
+
+          button.addEventListener('click', () => {
+            try {
+              const name = select.value;
+              if (name !== "SavasCorp" && name !== "ToFL") {
+                alert("Please select 'SavasCorp' or 'ToFL'!");
+                return;
+              }
+              result.textContent = `Company Name: ${name} | Market Cap: ${Mcap}`;
+              switch (name) {
+                case "SavasCorp":
+                  result.textContent += " → Economy And Space.";
+                  break;
+                case "ToFL":
+                  result.textContent += " → Energy And Transportation.";
+                  break;
+              }
+            } catch (error) {
+              console.error('Confirm button click error:', error);
+            }
+          });
+        } catch (error) {
+          console.error('DOMContentLoaded error:', error);
+        }
+      });
+
+      // Counter Animation
+      const counters = document.querySelectorAll('.counter');
+      const speed = 200;
+      counters.forEach(counter => {
+        try {
+          const updateCount = () => {
+            try {
+              const targetRaw = counter.getAttribute('data-target');
+              const target = Number(targetRaw);
+              if (isNaN(target) || target <= 0) {
+                counter.innerText = targetRaw;
+                return;
+              }
+              const count = +counter.innerText;
+              const inc = target / speed;
+              if (count < target) {
+                counter.innerText = Math.ceil(count + inc);
+                setTimeout(updateCount, 30);
+              } else {
+                counter.innerText = target;
+              }
+            } catch (error) {
+              console.error('Counter update error:', error);
+            }
+          };
+          updateCount();
+        } catch (error) {
+          console.error('Counter setup error:', error);
+        }
+      });
+
+      // Scroll Progress Bar
+      window.addEventListener('scroll', () => {
+        try {
+          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          document.getElementById("progressBar").style.width = scrolled + "%";
+        } catch (error) {
+          console.error('Scroll progress bar error:', error);
+        }
+      });
+
+      AOS.init({
+        duration: 1200,
+        once: true
+      });
+    } catch (error) {
+      console.error('General script error:', error);
+    }
+  </script>
+</body>
+</html>
